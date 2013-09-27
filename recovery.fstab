@@ -1,0 +1,20 @@
+# mount point	fstype		device			[device2]
+
+#/boot		mtd		boot
+#/cache		yaffs2		cache
+#/data		yaffs2		userdata
+#/misc		mtd		misc
+#/recovery	mtd		recovery
+#/sdcard		vfat		/dev/block/mmcblk0p1	/dev/block/mmcblk0
+#/system		yaffs2		system
+
+
+#<src>      <mnt_point>  <type>  <mnt_flags>            <fs_mgr_flags>
+boot	/boot		mtd	defaults						defaults
+recovery	/recovery	mtd	defaults						defaults
+system	/system		yaffs2	rw,noatime,barrier=0					wait
+cache	/cache		yaffs2	noatime,nosuid,nodev,noauto_da_alloc,barrier=0		wait
+userdata	/data		yaffs2	noatime,nosuid,nodev,noauto_da_alloc,barrier=0		wait,encryptable=footer,length=-16384
+misc	/misc		mtd	defaults		defaults
+/dev/block/mmcblk0p1	/storage/sdcard		vfat	defaults	defaults
+/dev/block/mmcblk1p1	/external_sd	vfat	defaults	defaults
